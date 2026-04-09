@@ -14,7 +14,7 @@ class DemoApplicationTests {
 	@Test
 	void holaMundoRespondeTextoEsperado() {
 		HelloController controller = new HelloController();
-		assertEquals("Hola Mundo 1", controller.holaMundo());
+		assertEquals("Hola Mundo 2", controller.holaMundo());
 	}
 
 }

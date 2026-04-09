@@ -1,14 +1,13 @@
 package com.darkcode.spring.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@RestController
-public class HelloController {
+@SpringBootApplication
+public class DemoApplication {
 
-    @GetMapping("/")
-    public String holaMundo() {
-        return "Hola Mundo 3";
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
     }
 }
 

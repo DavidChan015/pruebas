@@ -25,7 +25,7 @@ class DemoApplicationTests {
 	void holaMundoRespondeOk() throws Exception {
 		mockMvc.perform(get("/"))
 			.andExpect(status().isOk())
-			.andExpect(content().string("Hola Mundo"));
+			.andExpect(content().string("Hola Mundo 3"));
 	}
 
 }

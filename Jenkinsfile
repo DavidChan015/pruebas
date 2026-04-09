@@ -26,6 +26,12 @@ pipeline {
             }
         }
 
+        stage('Build Jar') {
+            steps {
+                sh './gradlew bootJar --no-daemon'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t ${IMAGE_NAME} .'
@@ -52,7 +58,11 @@ pipeline {
 
     post {
         always {
+            junit testResults: '**/build/test-results/test/*.xml', allowEmptyResults: false
             sh 'rm -f demo-app.tar.gz || true'
+        }
+        success {
+            archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
         }
     }
 }

@@ -1,0 +1,39 @@
+name: Test and Remote Docker Compose
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Basic Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Placeholder test
+        run: echo "Agrega aqui tus pruebas reales"
+
+  deploy_remote_compose:
+    name: Deploy on Remote Server with Docker Compose
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Execute docker compose on remote host
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 172.31.0.69
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd /home/ubuntu/compose-projects
+            docker-compose pull
+            docker-compose up -d --build
+            docker-compose ps

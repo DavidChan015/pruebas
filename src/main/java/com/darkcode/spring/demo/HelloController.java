@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
-    //hola3
+    //hola2
     @GetMapping("/")
     public String holaMundo() {
         return "Hola Mundo 2";

@@ -28,10 +28,10 @@ jobs:
       - name: Execute docker compose on remote host
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: 172.31.0.69
-          username: ${{ secrets.SSH_USERNAME }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
+          port: 22
           script: |
             cd /home/ubuntu/compose-projects
             docker-compose pull

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
-    //hola12345
+    //hola123456
     @GetMapping("/")
     public String holaMundo() {
         return "Hola Mundo 2";
